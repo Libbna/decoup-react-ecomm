@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import FeatureProducts from './components/FeatureProducts';
 import HeroSection from './components/HeroSection';
 
 const Home = () => {
@@ -8,7 +9,12 @@ const Home = () => {
     title: "Welcome to"
   };
 
-  return <HeroSection myData={data}></HeroSection>;
+  return (
+    <>
+      <HeroSection myData={data}></HeroSection>
+      <FeatureProducts />
+    </>
+  );
 };
 
 const Wrapper = styled.section`
