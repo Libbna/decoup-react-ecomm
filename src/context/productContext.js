@@ -11,7 +11,6 @@ const initialState = {
   isError: false,
   products: [],
   featuredProducts: [],
-  isSingleLoading: false,
   singleProduct: {},
 };
 

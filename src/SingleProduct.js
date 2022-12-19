@@ -3,6 +3,10 @@ import { useProductContext } from "./context//productContext";
 import React, { useEffect } from 'react';
 import { useParams } from "react-router-dom";
 import PageNavigation from "./components/PageNavigation";
+import { Container } from "./styles/Container";
+import { TbReplace, TbTruckDelivery } from "react-icons/tb";
+import { MdSecurity } from "react-icons/md";
+
 
 const API = "https://drupaldecoupled.ddev.site/jsonapi/node/products";
 
@@ -10,7 +14,7 @@ const API = "https://drupaldecoupled.ddev.site/jsonapi/node/products";
 const SingleProduct = () => {
 
 
-  const { getSingleProduct, isSingleLoading, singleProduct } = useProductContext();
+  const { getSingleProduct, isLoading, singleProduct } = useProductContext();
 
   const { id } = useParams();
 
@@ -27,9 +31,41 @@ const SingleProduct = () => {
     getSingleProduct(`${API}/${id}`);
   }, []);
 
+  if (isLoading) {
+    return <div className="page_loading">
+      Loading...
+    </div>;
+  }
+
   return (
     <Wrapper>
       <PageNavigation title={prodAttributes.name} />
+      <Container className="container">
+        <div className="grid grid-two-column">
+          {/* product data */}
+          <div className="product-data">
+            <h2>{prodAttributes.name}</h2>
+            <div className="product-data-price">
+              MRP: ₹{prodAttributes.price}
+            </div>
+            <p>{prodAttributes.description}</p>
+            <div className="product-data-warranty">
+              <div className="product-warranty-data">
+                <TbTruckDelivery className="warranty-icon" />
+                <p>Free Delivery</p>
+              </div>
+              <div className="product-warranty-data">
+                <TbReplace className="warranty-icon" />
+                <p>30 Days Replacement</p>
+              </div>
+              <div className="product-warranty-data">
+                <MdSecurity className="warranty-icon" />
+                <p>2 Years Warranty</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </Container>
     </Wrapper>
   );
 };
