@@ -67,7 +67,7 @@ const FeatureProducts = () => {
               featuredProducts.map((curElem, index) => {
                 return <Product
                   key={index}
-                  id={curElem.attributes.field_id}
+                  id={curElem.id}
                   name={curElem.attributes.field_name}
                   company={curElem.attributes.field_company}
                   price={curElem.attributes.field_price}

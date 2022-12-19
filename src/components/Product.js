@@ -2,7 +2,6 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 const Product = (props) => {
-  // console.log(props);
   return (
     <NavLink to={`/singleprod/${props.id}`}>
       <div className='card'>
@@ -14,7 +13,7 @@ const Product = (props) => {
         <div className='card-data'>
           <div className='card-data-flex'>
             <h3>{props.name}</h3>
-            <p className='card-data--price'>{props.price}</p>
+            <p className='card-data--price'>₹{props.price}</p>
           </div>
         </div>
       </div>

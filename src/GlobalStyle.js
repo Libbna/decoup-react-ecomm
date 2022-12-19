@@ -125,7 +125,7 @@ ${"" /* resuable code section  */}
     }
 
    .caption {
-      position: absolute;
+      /* position: absolute; */
       top: 15%;
       right: 10%;
       text-transform: uppercase;

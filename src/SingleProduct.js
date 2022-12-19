@@ -1,9 +1,37 @@
 import styled from "styled-components";
+import { useProductContext } from "./context//productContext";
+import React, { useEffect } from 'react';
+import { useParams } from "react-router-dom";
+import PageNavigation from "./components/PageNavigation";
 
-import React from 'react';
+const API = "https://drupaldecoupled.ddev.site/jsonapi/node/products";
+
 
 const SingleProduct = () => {
-  return <Wrapper></Wrapper>;
+
+
+  const { getSingleProduct, isSingleLoading, singleProduct } = useProductContext();
+
+  const { id } = useParams();
+
+
+  const prodAttributes = {
+    name: singleProduct.attributes.field_name,
+    description: singleProduct.attributes.field_description,
+    company: singleProduct.attributes.field_company,
+    price: singleProduct.attributes.field_price,
+  };
+
+
+  useEffect(() => {
+    getSingleProduct(`${API}/${id}`);
+  }, []);
+
+  return (
+    <Wrapper>
+      <PageNavigation title={prodAttributes.name} />
+    </Wrapper>
+  );
 };
 
 const Wrapper = styled.section`
